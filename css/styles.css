@@ -1,0 +1,98 @@
+html *
+{
+  font-family: "Spartan", Gadget, sans-serif;
+  font-weight: 700;	
+}
+
+/* Main body properties */
+body {	
+	color: hsl(180, 14%, 20%);
+  background-color: hsl(180, 29%, 50%);
+  font-size: 15px;
+	margin: auto;
+  text-align: center;
+  max-width: 1440px;
+  min-width: 375px;
+}
+
+/* */
+.base {
+  height: 100vh;
+  background: hsl(180, 52%, 96%);
+  border-radius: 8px;
+}
+
+.filter-tab {
+  padding: 1em;
+  width: 800px;
+  height: 50px;
+  background: hsl(180, 52%, 96%);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: relative;
+  bottom: 55px;
+  align-items: center;
+  justify-items: center;
+}
+
+.panels {
+  display: grid;
+  grid-row-gap: 2em;
+  grid-auto-rows: 200px;
+  grid-auto-columns: 800px;
+  align-items: center;
+  justify-items: center;
+  border: #242582 1px solid;
+}
+
+.panels > div {
+  padding: 1em;
+  background: hsl(180, 52%, 96%);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.panel-one {
+
+}
+
+.panel-two {
+  
+}
+
+.button {
+  color: red;
+}
+
+
+/* Change the color of links on hover */
+.panels div:hover {
+  color: hsl(180, 29%, 50%);
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #F64C72;
+  color: white;
+}
+
+.photo {
+	float: left;
+	width: 20%;
+	height: auto;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}

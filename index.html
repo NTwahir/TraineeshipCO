@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs API</title>
+</head>
+<body>
+    <img src="./images/bg-header-desktop.svg">
+    <div class="base">
+        Base background
+        <div class="filter-tab">Filter tab
+            <a href="#" class="button">Filter</a>
+        </div>
+        <div class="panels">
+            <div id="user"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        fetch('data.json')
+            .then(results => results.json())
+            .then(data => {
+                console.log(data)
+                var i = 0;
+                var id = data[i].id;
+
+                var company = data[i].company;
+                var contract = data[i].contract;
+                var isFeatured = data[i].feature;
+                var languages = data[i].languages;
+                var level = data[i].level;
+                var location = data[i].location;
+                var logo = data[i].logo;
+                var isNew = data[i].new;
+                var position = data[i].position;
+                var postedAt = data[i].postedAt;
+                var role = data[i].role;
+                var tools = data[i].tools;
+                var output = document.getElementById("user");
+
+                output.innerHTML = 
+                company + 'new!' + 'featured' + 
+                '<img src="'+logo+'">' + position + 
+                postedAt + contract + location + 
+                level + role + languages;
+
+            })
+    </script>
+</body>
+</html>
