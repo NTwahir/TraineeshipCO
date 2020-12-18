@@ -9,12 +9,31 @@
 <body>
     <img src="./images/bg-header-desktop.svg">
     <div class="base">
-        Base background
-        <div class="filter-tab">Filter tab
-            <a href="#" class="button">Filter</a>
+        <div class="filter-tab">
+            <tag id="one">Frontend
+                <a class="x-button">&times;</a>
+            </tag>
+            <tag id="two">CSS
+                <a class="x-button">&times;</a>
+            </tag>
+            <tag id="three">JavaScript
+                <a class="x-button">&times;</a>
+            </tag>
+            <tag id="four">HTML
+                <a class="x-button">&times;</a>
+            </tag>
+            <tag id="five">Senior
+                <a class="x-button">&times;</a>
+            </tag>
+            <tag id="six">Junior
+                <a class="x-button">&times;</a>
+            </tag>
+            <a class="clear-button">Clear</a>
         </div>
         <div class="panels">
-            <div id="user"></div>
+            <div id="user">
+                <div class="decoration"></div>
+            </div>
         </div>
     </div>
     <script type="text/javascript">
@@ -22,6 +41,21 @@
             .then(results => results.json())
             .then(data => {
                 console.log(data)
+
+                const topInfo = document.createElement('div');
+                const photo = document.createElement('div');
+                const name = document.createElement('div');
+                const botInfo = document.createElement('div');
+                const tags = document.createElement('div');
+
+
+                topInfo.className = 'topInfo';
+                photo.className = 'logo';
+                name.className = 'name';
+                botInfo.className = 'botInfo';
+                tags.className = 'tags';
+
+
                 var i = 0;
                 var id = data[i].id;
 
@@ -39,12 +73,44 @@
                 var tools = data[i].tools;
                 var output = document.getElementById("user");
 
-                output.innerHTML = 
-                company + 'new!' + 'featured' + 
-                '<img src="'+logo+'">' + position + 
-                postedAt + contract + location + 
-                level + role + languages;
+                var companyNode = document.createElement('p1');
+                var companyText = document.createTextNode(company);
+                var newNode = document.createElement('p2');
+                var newText = document.createTextNode('new!');
+                var featuredNode = document.createElement('p3');
+                var featuredText = document.createTextNode('featured');
 
+                name.innerHTML = position;
+
+                photo.innerHTML = '<img src="'+logo+'">';
+
+                botInfo.innerHTML = 
+                postedAt + '&emsp;' +  '&#8226' + '&emsp;' + contract + '&emsp;' + 
+                '&#8226' + '&emsp;' + location;
+
+                tags.innerHTML = 
+                level + ' ' + role + ' ' + languages + ' ' + tools;
+
+                companyNode.appendChild(companyText);
+                newNode.appendChild(newText);
+                featuredNode.appendChild(featuredText);
+
+                output.appendChild(photo);
+                output.appendChild(topInfo);
+                topInfo.appendChild(companyNode);
+                topInfo.appendChild(newNode);
+                topInfo.appendChild(featuredNode);
+                output.appendChild(name);
+                output.appendChild(botInfo);
+                output.appendChild(tags);
+
+                if (isNew == false) {
+                    topInfo.style.display = "none"
+                } else if (isFeatured == false) {
+                    topInfo.style.display = "none"
+                }
+                // var test = level.concat(role, languages, tools)
+                // console.log(test);
             })
     </script>
 </body>

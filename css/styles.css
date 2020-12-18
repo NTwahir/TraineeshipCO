@@ -15,77 +15,202 @@ body {
   min-width: 375px;
 }
 
-/* */
+/* Background of page*/
 .base {
   height: 100vh;
   background: hsl(180, 52%, 96%);
   border-radius: 8px;
 }
 
+
+/* Start of top filter bar*/
 .filter-tab {
-  padding: 1em;
-  width: 800px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 1em 2em 1em 2em;
+  width: 1000px;
   height: 50px;
+  margin: auto;
+  text-align: left;
   background: hsl(180, 52%, 96%);
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
-  bottom: 55px;
-  align-items: center;
-  justify-items: center;
+  bottom: 40px;
 }
 
+.filter-tab #one, #two, #three, #four, #five, #six {
+  color: hsl(180, 29%, 50%);
+  position: relative;
+  background:hsl(180, 31%, 91%);
+  padding: 0.5em;
+  border-radius: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 45px;
+}
+
+.filter-tab #one {
+  margin-right: 25px;
+  margin-left: 0;
+}
+
+.filter-tab #two {
+  margin-right: 60px;
+}
+
+.filter-tab #three {
+  margin-right: 15px;
+}
+
+.filter-tab #four {
+  margin-right: 50px;
+}
+
+.clear-button {
+  grid-column: end;
+  color: hsl(180, 29%, 50%);
+  text-align: center;
+  margin: auto;
+}
+
+.x-button {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: hsl(180, 29%, 50%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 26px;
+  text-align: center;
+}
+
+
+/* Start of the different user panels */
 .panels {
+  position: relative;
   display: grid;
   grid-row-gap: 2em;
-  grid-auto-rows: 200px;
-  grid-auto-columns: 800px;
-  align-items: center;
-  justify-items: center;
-  border: #242582 1px solid;
+  grid-template-rows: 145px;
+  grid-template-columns: 800px;
+  margin: auto;
+  width: 800px;
 }
 
 .panels > div {
-  padding: 1em;
+  color: hsl(180, 14%, 20%);
+  padding: 2em 2em 2em 5em;
   background: hsl(180, 52%, 96%);
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-.button {
-  color: red;
+.panels #user {
+  display: grid;
+  align-items: center;
 }
 
+.panels .topInfo{
+  justify-self: start;
+}
 
-/* Change the color of links on hover */
+.topInfo {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 8px;
+  grid-column: 2/3;
+  font-size: 15px;
+  word-spacing: 1em;
+  /* background: hsl(180, 14%, 20%); */
+  padding: 0.5em 0 0 0;
+}
+
+.topInfo > p2, p3 {
+  color: hsl(180, 52%, 96%);
+  font-size: 12px;
+  text-transform: uppercase;
+  background: hsl(180, 14%, 20%);
+  border-radius: 100px;
+  padding: 5px 8px 5px 8px;
+  justify-self: start;
+}
+
+.topInfo > p1 {
+  text-align: left;
+  align-self: center;
+  padding-right: 10px;
+}
+
+.topInfo > p2 {
+  background: hsl(180, 29%, 50%);
+}
+
+.logo {
+  position: absolute;
+  justify-self: center;
+  left: 2em;
+  top: 20%;
+}
+
+.name {
+  padding: 6px 0 0 0;
+  grid-column: 2/3;
+  font-size: 20px;
+  text-align: left;
+}
+
+.botInfo {
+  padding: 6px 0 0 0;
+  grid-column: 2;
+  font-weight: 500;
+  color: hsl(180, 8%, 52%);
+  text-align: left;
+}
+
+.tags {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.decoration {
+  opacity: 0.0;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: linear-gradient(
+    to right,
+  hsl(180, 29%, 50%) 0%,
+  hsl(180, 29%, 50%) 40%,
+  hsl(180, 52%, 96%) 40%,
+  hsl(180, 52%, 96%) 100%
+  );
+  width: 15px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* On hover changes*/
 .panels div:hover {
   color: hsl(180, 29%, 50%);
 }
 
-.button:hover {
+.panels #user:hover .decoration {
+  opacity: 1.0;
+}
+
+.clear-button:hover {
   text-decoration: underline;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #F64C72;
-  color: white;
-}
-
-.photo {
-	float: left;
-	width: 20%;
-	height: auto;
-}
-
-a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: initial;
+.x-button:hover {
+  background: hsl(180, 14%, 20%);
 }
