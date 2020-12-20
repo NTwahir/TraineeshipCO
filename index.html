@@ -7,37 +7,67 @@
     <title>Jobs API</title>
 </head>
 <body>
-    <img src="./images/bg-header-desktop.svg">
+    <img id="main-img" src="./images/bg-header-desktop.svg">
     <div class="base">
-        <div class="filter-tab">
+        <div style="display: none;" id="filter-tab" class="filter-tab">
             <ul id="dynamic-list">
-                <li id="one">Frontend
-                    <a id="x1" class="x-button">&times;</a>
+                <li style="display: none;" id="Frontend">Frontend
+                    <a id="x1"  class="x-button">&times;</a>
                 </li>
-                <li id="two">CSS
-                    <a id="x2" class="x-button">&times;</a>
+                <li style="display: none;" id="CSS">CSS
+                    <a id="x2"  class="x-button">&times;</a>
                 </li>
-                <li id="three">JavaScript
-                    <a id="x3" class="x-button">&times;</a>
+                <li style="display: none;" id="JavaScript">JavaScript
+                    <a id="x3"  class="x-button">&times;</a>
                 </li>
-                <li id="four">HTML
-                    <a id="x4" class="x-button">&times;</a>
+                <li style="display: none;" id="HTML">HTML
+                    <a id="x4"  class="x-button">&times;</a>
                 </li>
-                <li id="five">Senior
-                    <a id="x5" class="x-button">&times;</a>
+                <li style="display: none;" id="Senior">Senior
+                    <a id="x5"  class="x-button">&times;</a>
                 </li>
-                <li id="six">Junior
-                    <a id="x6" class="x-button">&times;</a>
+                <li style="display: none;" id="Junior">Junior
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Midweight">Midweight
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Fullstack">Fullstack
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Python">Python
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="React">React
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Sass">Sass
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Ruby">Ruby
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Backend">Backend
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="RoR">RoR
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Vue">Vue
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="Django">Django
+                    <a id="x6"  class="x-button">&times;</a>
+                </li>
+                <li style="display: none;" id="FullStack">FullStack
+                    <a id="x6"  class="x-button">&times;</a>
                 </li>
             </ul>
             <a type="button" id="btnclear" class="clear-button">Clear</a>
         </div>
-        <div id="main-panel" class="panels">
-            <div id="user">
-                <div class="decoration"></div>
-            </div>
-        </div>
+        <ul id="main-panel" class="panels"></ul>
     </div>
-    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/functions.js" type="module"></script>
 </body>
 </html>
