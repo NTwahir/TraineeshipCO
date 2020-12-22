@@ -17,7 +17,7 @@ body {
 
 /* Background of page*/
 .base {
-  height: 150vh;
+  height: 100vmax;
   background: hsl(180, 52%, 96%);
   border-radius: 8px;
 }
@@ -230,4 +230,101 @@ img#main-img {
 .tag:hover {
   color: hsl(180, 52%, 96%);
   background: hsl(180, 29%, 50%);
+}
+
+/* Phone layout changes */
+@media only screen and (device-width: 375px),
+only screen and (max-width:1080px) {
+body {
+  max-width: 1440px;
+  min-width: 375px;
+}
+
+.base {
+  height: 3000px;
+  background: hsl(180, 52%, 96%);
+  border-radius: 8px;
+}
+
+img {
+  object-fit: contain;
+  width: 70%;
+  height: auto;
+}
+
+/* Start of top filter bar*/
+.filter-tab {
+  width: 375px;
+  height: auto;
+}
+
+.filter-tab li {
+  margin: 0 10px 0 0;
+  margin-bottom: 10px;
+}
+
+#dynamic-list li {
+  display: inline-block;
+}
+
+/* Start of the different user panels */
+.panels {
+  width: 375px; /* width: min-content; */
+  max-width: 375px;
+  height: 200vh;
+}
+
+.panels#main-panel li {
+  margin-bottom: 0px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.panels#main-panel #sub-panel {
+  margin-bottom: 4em;
+}
+
+
+.panels #sub-panel {
+  padding: 2em 0 2em 2em;
+}
+
+.panels .user {
+  grid-template-columns: auto;
+}
+
+.topInfo {
+  grid-column: 1/2;
+}
+
+.logo {
+  top: -15%;
+}
+
+.name {
+  grid-column: 1/2;
+}
+
+.botInfo {
+  grid-column: 1;
+}
+
+.tags {
+  grid-column: 1;
+  grid-row: 5;
+  text-align: left;
+  padding-left: 0;
+}
+
+.tag {
+  display: inline-block;
+}
+  }
+
+.line {
+  width: 90%;
+  grid-row: 4;
+  margin: 1em;
+  margin-left: 0;
+  margin-bottom: 0;
 }

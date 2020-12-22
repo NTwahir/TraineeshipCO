@@ -1,3 +1,8 @@
+// Variables
+var allTags = ["Frontend", "CSS", "JavaScript", "HTML", "Senior", "Junior",
+"Midweight", "Fullstack", "Python", "React", "Sass", "Ruby", "Backend", 
+"RoR", "Vue", "Django", "FullStack"];
+
 //Methods
 function addPanel(x) {
     x.toString();
@@ -21,7 +26,7 @@ function makeTags(lst, mainNode) {
         var n = num.toString();
         var node = document.createElement('li');
         node.className = 'tag';
-        node.setAttribute("id", "tag-" + n);
+        node.setAttribute("id", lst[i]);
         var text = document.createTextNode(lst[i]);
         node.appendChild(text);
         mainNode.appendChild(node);
@@ -39,9 +44,6 @@ function removeItem(x) {
  
     let div =  document.getElementById("filter-tab");
     let tag = document.getElementById(x);
-    let allTags = ["Frontend", "CSS", "JavaScript", "HTML", "Senior", "Junior",
-    "Midweight", "Fullstack", "Python", "React", "Sass", "Ruby", "Backend", 
-    "RoR", "Vue", "Django", "FullStack"];
 
     if (x == 'all') {
         div.style.display = "none";
@@ -50,7 +52,6 @@ function removeItem(x) {
         })
     } else {
         tag.style.display = "none";
-        console.log(getValue(x));
     }
 }
 
@@ -66,16 +67,34 @@ function getTags(user) {
     let subPanels = mainPanel.getElementsByTagName("ul");
     // Get each tag from div
     let li = subPanels[user].querySelectorAll("li.tag");
-    tagFunction(li);
-    checkTags(li, "HTML");
+    tagFunction(li, 10);
+    //checkTags(li, "HTML");
 }
 
+/**
+ * 
+ * @param {*} lstOfTags smt
+ * @param {*} tag 
+ */
 function checkTags(lstOfTags, tag) {
     // Check for equal tag in lstOfTags
-    for (let i = 0; i < lstOfTags.length; i++) {
-        let value = lstOfTags[i].innerHTML;
-        console.log(value.indexOf(tag) > -1);
-    }  
+    let result = false;
+    let arr = [];
+    let arr2 = [];
+    let filterTab = document.getElementById("filter-tab");
+    let li2 = filterTab.getElementsByTagName("li");
+
+    lstOfTags.forEach(function(item) {
+        arr.push(item.innerHTML);
+    })
+    for (let j = 0; j < allTags.length; j++) {
+        if (li2[j].style.display == "") {
+            arr2.push(li2[j].innerHTML.split("<")[0].trim());
+        }
+    }
+    let checker = (arr, target) => target.every(v => arr.includes(v));
+    result = checker(arr, arr2);
+    return result; 
 }
 
 function showFeature(isNew, isFeatured, index) {
@@ -96,54 +115,67 @@ function showFeature(isNew, isFeatured, index) {
     }
 }
 
-function tagFunction(lstOfTags) {
-
+function tagFunction(lstOfTags, noOfUsers) {
+    
     for (let i = 0; i < lstOfTags.length; i++) {
         let value = lstOfTags[i].innerHTML;
         let tag = lstOfTags[i];
         tag.addEventListener("click", function() {
             addItem(value);
-            console.log(value);
+            filter(value, noOfUsers);
             goodLayout();
         });
-    }  
-
+    }
 }
 
-function filterFunction() {
+function filter(tag, noOfUsers) {
+    for (let k = 0; k < noOfUsers; k++) {
+            let mainPanel = document.getElementById("main-panel");
+            let subPanels = mainPanel.getElementsByTagName("ul");
+            // Get each tag from div
+            let li = subPanels[k].querySelectorAll("li.tag");
+            let hasTag = checkTags(li, tag);
+            togglePanel(k, "none");
+            if (hasTag) {
+                togglePanel(k, "");
+            } else if (!hasTag) {
+                togglePanel(k, "none");
+            } else {
+                togglePanel(k, "none");
+            }
+        }
+
+    }
+
+/**
+ * {@param i}
+ */  
+function filterBtns() {
     // Clear button functionality
     document.getElementById("btnclear").addEventListener("click", function() {
         removeItem('all');
         goodLayout();
+        for (let i = 0; i < 10; i++) {
+            togglePanel(i, "");
+        }
     });
 
-    // All other filter button functionalities
-    document.getElementById("x1").addEventListener("click", function() {
-        removeItem("Frontend");
-    });
-
-    document.getElementById("x2").addEventListener("click", function() {
-        removeItem("CSS");
-    });
-
-    document.getElementById("x3").addEventListener("click", function() {
-        removeItem("JavaScript");
-    });
-
-    document.getElementById("x4").addEventListener("click", function() {
-        removeItem("four");
-    });
-
-    document.getElementById("x5").addEventListener("click", function() {
-        removeItem("five");
-    });
-
-    document.getElementById("x6").addEventListener("click", function() {
-        removeItem("six");
+    allTags.forEach(function(item) {
+        let xBtn = document.getElementById(item).getElementsByTagName("a")[0];
+        xBtn.addEventListener("click", function() {
+            removeItem(item);
+            filter(item, 10);
+        })
     });
 }
-// If no tags are visible or filter tab is not visible, show all panels
-function showPanel(input) {}
+
+// Change the state of a user to either show or hide panel
+function togglePanel(user, state) {
+    let mainPanel = document.getElementById("main-panel");
+    let subPanels = mainPanel.querySelectorAll("#sub-panel");
+    let panel = subPanels[user];
+    panel.style.display = state;
+}
 
 // Prevents layout of the page to jump
 function goodLayout() {
@@ -156,4 +188,4 @@ function goodLayout() {
     }
 }
 
-export {addPanel, makeTags, getTags, showFeature, filterFunction, goodLayout};
+export {addPanel, makeTags, showFeature, filterBtns, getTags};

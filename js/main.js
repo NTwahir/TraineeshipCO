@@ -1,14 +1,17 @@
-import {addPanel, makeTags, getTags, showFeature, filterFunction, goodLayout} from './functions.js';
+import {addPanel, makeTags, showFeature, filterBtns, getTags} from './functions.js';
 
 fetch('data.json')
 .then(results => results.json())
 .then(data => {
-    console.log(data)
     main(data);
 });
 
 function main(data) {
+    var siteWidth = 1920;
+    var scale = screen.width /siteWidth;
 
+    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
+    console.log(window.screen.width);
     //Makes the sub-panels
     for (var i = 0; i < data.length; i++) {
         addPanel(i+1);
@@ -16,7 +19,7 @@ function main(data) {
         getTags(i);
     }
 
-    filterFunction();
+    filterBtns();
 
     function addUser(i) {
         const topInfo = document.createElement('div');
@@ -81,18 +84,20 @@ function main(data) {
         output.appendChild(botInfo);
         output.appendChild(tags);
 
+        let windowWidth = window.screen.width;
+        if (windowWidth <= 1080) {
+            const line = document.createElement('hr');
+            line.setAttribute("class", "line");
+            output.appendChild(line);
+        }
+
         makeTags(lst, tags);
 
         showFeature(isNew, isFeatured, i);
     }
-    // Usefull 
-    //console.log(document.getElementById("Frontend").getElementsByTagName("a")[0]);
-    
 }
 
 
 // Only things left to do:
-// -Hide panels when filtered : {@code showPanel}
-// -Construct an efficient way to remove items form filter list : {@code filterFunction}
 // -Add phone resize
 // -Finish README.md
