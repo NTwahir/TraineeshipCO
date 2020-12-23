@@ -5,6 +5,7 @@ var allTags = ["Frontend", "CSS", "JavaScript", "HTML", "Senior", "Junior",
 
 //Methods
 function addPanel(x) {
+    x += 1;
     x.toString();
     var decoration = document.createElement('div');
     decoration.setAttribute("class", "decoration");
@@ -22,8 +23,6 @@ function addPanel(x) {
 
 function makeTags(lst, mainNode) {
     for(var i = 0; i < lst.length; i++) {
-        var num = i+1;
-        var n = num.toString();
         var node = document.createElement('li');
         node.className = 'tag';
         node.setAttribute("id", lst[i]);
@@ -177,7 +176,9 @@ function togglePanel(user, state) {
     panel.style.display = state;
 }
 
-// Prevents layout of the page to jump
+/**
+ * Prevents layout of the page to jump.
+ */
 function goodLayout() {
     let div =  document.getElementById("filter-tab");
     let state = div.style.display;
@@ -188,4 +189,20 @@ function goodLayout() {
     }
 }
 
-export {addPanel, makeTags, showFeature, filterBtns, getTags};
+/**
+ * Event listener function that changes the visiblity of
+ * the line separating the info and tags.
+ * @param {*} node the affected node.
+ */
+function onResize(node){
+    // Get width of the window excluding scrollbars
+    // And changes display of line
+    var w = document.documentElement.clientWidth;
+    if(w <= 1080) {
+        node.style.display = "";
+    } else {
+        node.style.display = "none";
+    }
+}
+
+export {addPanel, makeTags, showFeature, filterBtns, getTags, onResize};
